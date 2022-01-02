@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zls.zzz.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"></result>
+        <result column="name" jdbcType="VARCHAR" property="name"></result>
+        <result column="age" jdbcType="VARCHAR" property="age"></result>
+    </resultMap>
+    <insert id="add" parameterType="com.zls.zzz.entity.User" >
+        insert into  User   (name,age) values (#{name},#{age});
+
+    </insert>
+
+</mapper>
