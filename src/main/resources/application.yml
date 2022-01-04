@@ -6,3 +6,10 @@ spring:
     view-names: /*
     cache: false
     prefix: /WEB-INF/html
+logging:
+  level:
+    com.example.demo.mapper: debug
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

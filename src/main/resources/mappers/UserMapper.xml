@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zls.zzz.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.User">
-        <result column="id" jdbcType="INTEGER" property="id"></result>
-        <result column="name" jdbcType="VARCHAR" property="name"></result>
-        <result column="age" jdbcType="VARCHAR" property="age"></result>
+<!--    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.User">-->
+<!--        <result column="id" jdbcType="INTEGER" property="id"></result>-->
+<!--        <result column="name" jdbcType="VARCHAR" property="name"></result>-->
+<!--        <result column="age" jdbcType="VARCHAR" property="age"></result>-->
+<!--    </resultMap>-->
+    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.Hilist_b">
+        <result column="hilistCode" jdbcType="VARCHAR" property="hilistCode"/>
     </resultMap>
     <insert id="add" parameterType="com.zls.zzz.entity.User" >
         insert into  User   (name,age) values (#{name},#{age});
-
     </insert>
+    <select id="find27dmbyhilist_b" parameterType="com.zls.zzz.entity.Hilist_b"  resultMap="BaseResultMap">
+        SELECT HILIST_CODE hilistCode  FROM HILIST_B  WHERE  INSU_ADMDVS = '610400' and LIST_TYPE ='301' and VALI_FLAG ='1' and HILIST_CODE in(#{hilistCode});
+    </select>
 
 </mapper>
