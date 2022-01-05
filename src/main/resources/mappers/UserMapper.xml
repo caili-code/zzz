@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zls.zzz.mapper.UserMapper">
-<!--    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.User">-->
-<!--        <result column="id" jdbcType="INTEGER" property="id"></result>-->
-<!--        <result column="name" jdbcType="VARCHAR" property="name"></result>-->
-<!--        <result column="age" jdbcType="VARCHAR" property="age"></result>-->
-<!--    </resultMap>-->
-    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.Hilist_b">
+    <resultMap id="BaseResultMap" type="com.zls.zzz.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"></result>
+        <result column="name" jdbcType="VARCHAR" property="name"></result>
+        <result column="age" jdbcType="VARCHAR" property="age"></result>
+    </resultMap>
+    <resultMap id="BaseResultMap1" type="com.zls.zzz.entity.Hilist_b">
         <result column="hilistCode" jdbcType="VARCHAR" property="hilistCode"/>
     </resultMap>
-    <insert id="add" parameterType="com.zls.zzz.entity.User" >
-        insert into  User   (name,age) values (#{name},#{age});
-    </insert>
-    <select id="find27dmbyhilist_b" parameterType="com.zls.zzz.entity.Hilist_b"  resultMap="BaseResultMap">
+
+    <resultMap id="BaseResultMap2" type="com.zls.zzz.entity.His_mdi_info_new">
+        <result column="医保目录编码" jdbcType="VARCHAR" property="医保目录编码"/>
+        <result column="收费项目等级" jdbcType="VARCHAR" property="收费项目等级"/>
+        <result column="自付比例" jdbcType="VARCHAR" property="自付比例"/>
+    </resultMap>
+
+<!--    <insert id="add" parameterType="com.zls.zzz.entity.User" >-->
+<!--        insert into  User   (name,age) values (#{name},#{age});-->
+<!--    </insert>-->
+<!--    <insert id="addHc" parameterType="com.zls.zzz.entity.Hilist_b" >-->
+<!--        insert into  HIS_MDI_INFO_NEW   (医保目录编码,开始日期,参保所属医保区划,医保目录名称,结束日期,-->
+<!--医疗收费项目类别,收费项目等级,限制使用标志,目录类别,医疗使用标志,生育使用标志,医保目录使用类别,限复方使用类型,-->
+<!--五笔助记码,拼音助记码,备注,有效标志,数据唯一记录号,数据更新时间,创建人ID,创建人姓名,数据创建时间,创建机构编号,-->
+<!--经办人ID,经办人姓名,经办时间,经办机构编号,统筹区编号,医保目录自付比例人员类别,表名,-->
+<!--目录自付比例类别,自付比例,医保目录限价类型,医保目录超限处理方式,医保目录定价上限金额) values (-->
+<!--#{医保目录编码},'2021-01-01 00:00:00'  ,'610400' , '医保目录名称',' '  ,-->
+<!--'1401' ,#{收费项目等级} ,'0' ,'301' ,'1' ,'1' ,'0' ,'9' ,' ' ,' ',' ','1'  ,right(uuid_short(),7) ,date_format(now(),'%Y-%m-%d %H:%i:%S') ,-->
+<!--'pingan'  ,'数据迁移' ,date_format(now(),'%Y-%m-%d %H:%i:%S') ,'610400'  , 'pingan' ,'数据迁移' ,-->
+<!--date_format(now(),'%Y-%m-%d %H:%i:%S') ,'610400' ,'610400'  ,'310' ,'YIYONGHAOCAI' ,'10' ,#{自付比例}  ,'0' ,'1' ,'0');-->
+<!--    </insert>-->
+    <select id="find27dmbyhilist_b" parameterType="com.zls.zzz.entity.Hilist_b"  resultMap="BaseResultMap1">
         SELECT HILIST_CODE hilistCode  FROM HILIST_B  WHERE  INSU_ADMDVS = '610400' and LIST_TYPE ='301' and VALI_FLAG ='1' and HILIST_CODE in(#{hilistCode});
+    </select>
+
+    <resultMap id="BaseResultMap3" type="com.zls.zzz.entity.Mcs_info_b_all_wq">
+        <result column="单件产品名称" jdbcType="VARCHAR" property="单件产品名称"/>
+    </resultMap>
+    <select id="find27byHcName" parameterType="com.zls.zzz.entity.Hilist_b"  resultMap="BaseResultMap3">
+        SELECT 单件产品名称 FROM mcs_info_b_all_wq  WHERE    医保耗材27位代码 =#{hilistCode};
     </select>
 
 </mapper>

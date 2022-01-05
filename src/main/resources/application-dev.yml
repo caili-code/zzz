@@ -3,15 +3,27 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/xiadadasystemadmin?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    username: xianyang_zd
+    password: Admin123
+    url: jdbc:mysql://drdsusrz4l215129.drds.res.shx.hsip.gov.cn:3306/polcent_db?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
-#  mapper-locations: classpath:mappers/*.xml
-#  type-aliases-package: com.zls.zzz.entity
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.zls.zzz.entity
   #用于mybatis在控制台打印sql日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#master:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/xiadadasystemadmin?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#    username: root
+#    password: 123456
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#second:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/xiadadasystemadmin?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#    username: root
+#    password: 123456
+#    driverClassName: com.mysql.cj.jdbc.Driver
 

@@ -2,6 +2,7 @@ package com.zls.zzz.controller;
 
 import com.zls.zzz.entity.Haocai;
 import com.zls.zzz.entity.Hilist_b;
+import com.zls.zzz.entity.His_mdi_info_new;
 import com.zls.zzz.entity.User;
 import com.zls.zzz.service.UserService;
 import com.zls.zzz.tool.Excelff;
@@ -25,7 +26,11 @@ public class UserController {
         System.out.println(1111);
         return userService.add(user);
     }
-
+    @PostMapping("/addHc")
+    public Boolean addHc(@RequestBody His_mdi_info_new hmin){
+        System.out.println(1111);
+        return userService.addHc(hmin);
+    }
     @RequestMapping("/test")
     public String TEST(User user){
         System.out.println(1111);
@@ -57,13 +62,4 @@ public class UserController {
         return userService.find27dmbyhilist_b(a);
     }
 
-    @Autowired
-    private TTT ttt;
-    @ResponseBody
-    @RequestMapping("test2")
-    public String test(){
-        ttt.kk();
-        userService.findAll();
-        return "shit";
-    }
 }

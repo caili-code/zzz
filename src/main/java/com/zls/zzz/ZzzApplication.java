@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
-//@MapperScan("com.zls.zzz.mapper")
+@MapperScan("com.zls.zzz.mapper")
 public class ZzzApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZzzApplication.class, args);
